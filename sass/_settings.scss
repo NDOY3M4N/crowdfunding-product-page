@@ -1,0 +1,62 @@
+/** Global Settings here **/
+
+/* Color Palette */
+:root {
+  // Primary
+  --light-cyan: hsl(176, 50%, 47%);
+  --dark-cyan: hsl(176, 72%, 28%);
+
+  // Neutral
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 0%, 100%);
+  --dark-gray: hsl(0, 0%, 48%);
+  --light-gray: hsl(0, 0%, 88%);
+}
+
+/* Resets */
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  padding-bottom: 5rem;
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    a { text-decoration: none; }
+  }
+}
+
+/* Typography */
+html {
+  font-size: 16px;
+
+  body {
+    font-size: 100%;
+    font-family: 'Commissioner', sans-serif;
+    font-weight: 400;
+
+    h1, h2, h3 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    h1 { font-size: 2.15rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.05rem; }
+
+    p { line-height: 1.7; color: var(--dark-gray); }
+    a { font-weight: 500; }
+  }
+}

@@ -1,0 +1,136 @@
+@use '../mixins';
+
+header {
+  height: 300px;
+  background-image: url('../img/image-hero-mobile.jpg');
+  background-size: cover;
+  background-position: top center;
+
+  @include mixins.screen('small') {
+    height: 400px;
+    background-image: url('../img/image-hero-desktop.jpg');
+  }
+
+  .navbar {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include mixins.screen('small') {
+      padding: 3rem 5rem;
+    }
+
+    &__links {
+      position: absolute;
+      top: -10px;
+      left: 0;
+      right: 0;
+      margin: 5rem 2rem;
+      background-color: var(--white);
+      border-radius: .5rem;
+      @include mixins.transition;
+      opacity: 0;
+      pointer-events: none;
+
+      &__item {
+        padding: 1.5rem;
+
+        &:nth-child(2) {
+          border-top: 1px solid var(--light-gray);
+          border-bottom: 1px solid var(--light-gray);
+        }
+
+        a { color: var(--dark); }
+      }
+
+      @include mixins.screen('small') {
+        margin: 0;
+        background-color: transparent;
+        opacity: 1;
+        pointer-events: all;
+        position: static;
+        display: flex;
+
+        &__item {
+          padding: 0 1rem;
+
+          &:nth-child(2) { border: none; }
+
+          a {
+            color: var(--white);
+            @include mixins.transition(color);
+          }
+
+          &:hover {
+            a { color: hsl(0, 0%, 78%) }
+          }
+        }
+      }
+    }
+
+    &__menu {
+      position: relative;
+      width: 16px;
+      height: 15px;
+
+      &__bar {
+        position: absolute;
+        content: '';
+        background-color: var(--white);
+        width: 100%;
+        height: 3px;
+        @include mixins.transition;
+
+        &:first-child,
+        &:last-child {
+          top: calc(50% - 1.5px);
+        }
+
+        &:nth-child(2) { top: 0; }
+        &:nth-child(3) { bottom: 0; }
+      }
+
+      @include mixins.screen('small') { display: none; }
+    }
+
+    // Animations to do when users click on the mobile navbar menu
+    &.open {
+      &::before {
+        overflow: hidden;
+        content: '';
+        @include mixins.overlay(linear-gradient(to bottom, hsla(0, 0%, 0%, 0.6) 10%, hsla(0, 0%, 100%, 0.5)));
+      }
+
+      .navbar__logo { z-index: 1 }
+
+      .navbar__menu__bar {
+        &:nth-child(2) {
+          opacity: 0;
+          top: 100%;
+        }
+
+        &:nth-child(3) {
+          opacity: 0;
+          bottom: 100%;
+        }
+
+        &:first-child { transform: rotate(45deg); }
+        &:last-child { transform: rotate(-45deg); }
+      }
+
+      .navbar__links {
+        top: 0;
+        opacity: 1;
+        pointer-events: all;
+        z-index: 2;
+      }
+    }
+  }
+}
+// Also when the navbar menu is open,
+// we disable the scrolling
+body.no-scroll {
+  overflow: hidden;
+}
+
