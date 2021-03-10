@@ -1,0 +1,30 @@
+@use 'sass:map';
+
+/* Media Queries */
+$breakpoints: (
+  'small': 600px,
+  'medium': 1024px
+);
+
+@mixin screen($breakpoint) {
+  $screen-width: map.get($breakpoints, $breakpoint);
+
+  @media (min-width: $screen-width) {
+    @content
+  }
+}
+
+/* Transitions */
+@mixin transition($transitionProperty: all, $transitionDuration: .6s) {
+  transition: $transitionProperty $transitionDuration ease-in-out;
+}
+
+/* Overlay */
+@mixin overlay($background, $position: absolute) {
+  position: $position;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $background;
+}
