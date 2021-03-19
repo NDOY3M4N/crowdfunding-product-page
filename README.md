@@ -1,75 +1,355 @@
-# Frontend Mentor - Crowdfunding product page
+# Frontend Mentor - Blogr landing page solution
 
-![Design preview for the Crowdfunding product page coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Blogr landing page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/blogr-landing-page-EX2RLAApP). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges allow you to improve your skills in a real-life workflow.
+## Overview
 
-**To do this challenge, you need a basic understanding of HTML, CSS and JavaScript.**
+### The challenge
 
-## The challenge
+Users should be able to:
 
-Your challenge is to build out this crowdfunding product page and get it looking as close to the design as possible.
+- View the optimal layout for the site depending on their device's screen size
+- See hover states for all interactive elements on the page
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+### Screenshot
 
-Your users should be able to:
+![Screenshot of my solution](./screenshot.png)
 
-- View the optimal layout depending on their device's screen size
-- See hover states for interactive elements
-- Make a selection of which pledge to make
-- See an updated progress bar and total money raised based on their pledge total after confirming a pledge
-- See the number of total backers increment by one after confirming a pledge
-- Toggle whether or not the product is bookmarked
+### Links
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-## Where to find everything
+## My process
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design to work to.
+### Built with
 
-The designs are in JPG static format. This will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. This should help train your eye to perceive differences in spacings and sizes.
+- Semantic HTML5 markup
+- SASS and some CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- Vanilla Javascript
 
-If you would like the design files (we provide Sketch & Figma versions) in order to inspect the design in more detail you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+### What I learned
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+In the design, the item card in the main page is kinda similar to the item card on the modal. So I thought to myself why not use the same markup. But then I realized that the disposition of certain element is not the same.
 
-There is also a `style-guide.md` file, which contains the information you'll need, such as color palette and fonts.
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 16px">
+  <img src="./item--main.png">
+  <img src="./item--modal.png">
+</div>
 
-## Building your project
+On the left we have the `item--main` and on the right the `item--modal`. As you can see the header and the footer of our items are not the same.
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+So I come up with this markup:
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). This will make it easier to share your code with the community if you need some help. If you're not sure how to do this, [have a read through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a URL. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, but we recommend using [Vercel](https://bit.ly/fem-vercel). We've got more information about deploying your project with Vercel below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes that you could create to make reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+```html
+<div class="item item--main" id="bamboo">
+  <div class="item__header">
+    <div class="item__header__title">Bamboo Stand</div>
+    <div class="item__header__pledge">Pledge $25 or more</div>
+  </div>
+  <div class="item__desc">
+    <p>You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
+  </div>
+  <div class="item__footer">
+    <div class="item__footer__stock">
+      <h1>101</h1>
+      <p>left</p>
+    </div>
+    <button class="btn" data-pledge="pledgeBambooStand">Select Reward</button>
+  </div>
+</div>
+```
 
-## Deploying your project
+```html
+<div class="item item--modal">
+  <div class="item__header">
+    <div class="item__header__radio">
+      <input type="radio" name="radioPledge" id="pledgeBambooStand">
+      <span class="custom-radio"></span>
+    </div>
+    <label for="pledgeBambooStand" class="item__header__title">Bamboo Stand</label>
+    <div class="item__header__pledge">Pledge $25 or more</div>
+  </div>
+  <div class="item__desc">
+    <p>You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
+  </div>
+  <div class="item__footer">
+    <div class="item__footer__stock">
+      <h1>101</h1>
+      <p>left</p>
+    </div>
+    <form action="#" class="item__footer__action">
+      <p>Enter your pledge</p>
+      <div action="#" class="item__footer__action__checkout">
+        <div class="item__footer__action__checkout__input">
+          <span class="unit">$</span>
+          <input type="number" name="pledgeMoney" min="25" value="25" data-item="bamboo-stand">
+        </div>
+        <button class="btn">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>
+```
 
-As mentioned above, there are a number of ways to host your project for free. We recommend using [Vercel](https://bit.ly/fem-vercel) as it's an amazing service and extremely simple to get set up with. If you'd like to use Vercel, here are some steps to follow to get started:
+Here's the SASS for these classes (sorry for the long sass code :sob:):
 
-1. [Sign up to Vercel](https://bit.ly/fem-vercel-signup) and go through the onboarding flow, ensuring your GitHub account is connected by using their [Vercel for GitHub](https://vercel.com/docs/v2/git-integrations/vercel-for-github) integration.
-2. Connect your project to Vercel from the ["Import project" page](https://vercel.com/import), using the "From Git Repository" button and selecting the project you want to deploy.
-3. Once connected, every time you `git push`, Vercel will create a new [deployment](https://vercel.com/docs/v2/platform/deployments) and the deployment URL will be shown on your [Dashboard](https://vercel.com/dashboard). You will also receive an email for each deployment with the URL.
+```scss
+/* Style for an item */
+.item {
+  --border-width: 2px;
+  --padding: 1.5rem;
+  @extend .card; // some padding and margin styles
 
-## Sharing your solution
+  &.selected { border-color: var(--light-cyan); }
+  & > * + * { margin-top: 1.5rem; }
 
-There are multiple places you can share your solution:
+  &__header {
+    &__title {
+      font-weight: 700;
+      cursor: pointer;
+      @include mixins.transition(color, .4s);
+    }
 
-1. Submit it on the platform so that other users will see your solution on the site. Here's our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) to help you do that.
-2. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack).
-3. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor** including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
+    &__pledge {
+      font-weight: 500;
+      color: var(--light-cyan);
+    }
+  } /* end of .item__header */
 
-## Giving feedback
+  &__footer {
+    &__stock {
+      display: flex;
+      align-items: center;
 
-Feedback is always welcome, so if you have any to give on this challenge please email hi[at]frontendmentor[dot]io.
+      h1 {
+        margin-bottom: 0;
+        margin-right: 1rem;
+      }
+    }
+  } /* end of .item__footer */
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
 
-**Have fun building!** 🚀
+  /* Style for a basic item (item shown in the main element)*/
+  &--main {
+    .item__header > * + * { margin-top: .5rem; }
+    .item__footer > * + * { margin-top: 1.5rem; }
+
+    .item__header,
+    .item__footer {
+
+      @include mixins.screen('small') {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & > * + * { margin-top: 0; }
+      }
+    }
+  } /* end of .item--main */
+
+  /* Style for a complex item (item shown in the modal element)*/
+  &--modal {
+    --padding: 1.5rem 0;
+
+    & > *:not(.item__footer) { padding: 0 1rem; }
+
+    &.selected {
+      .item__footer__action { display: block; }
+    }
+    @include mixins.screen('small') {
+      &.selected {
+        .item__footer__action { display: flex; }
+      }
+    }
+
+    .item__header {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      grid-template-rows: 20px 20px;
+      column-gap: .2rem;
+      row-gap: .5rem;
+
+      &__title { /* shamelessly copied from tailwindcss */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &__radio {
+        grid-row: 1 / -1;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+
+        input[type="radio"] {
+          position: absolute;
+          opacity: 0;
+          width: 24px;
+          height: 24px;
+          transform: translate(50%, 50%);
+          z-index: 5;
+
+          & + .custom-radio {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--light-gray);
+            border-radius: 50%;
+            background-color: transparent;
+            transform: translate(50%, 50%);
+            @include mixins.transition(border, .4s);
+          }
+
+          &:checked + .custom-radio:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: .25rem;
+            border-radius: 50%;
+            background-color: var(--light-cyan);
+          }
+        }
+      } /* end of .item__header__radio */
+
+      &:hover {
+        .item__header {
+          &__title { color: var(--light-cyan); }
+          &__radio input + .custom-radio { border: 2px solid var(--light-cyan); }
+        }
+      }
+
+      &--no-reward .item__header__title {
+        grid-row: 1 / -1;
+        align-self: center;
+      }
+
+      @include mixins.screen('small') {
+        grid-template-columns: 48px max-content max-content;
+
+        &__title,
+        &__pledge {
+          grid-row: 1 / -1;
+          align-self: center;
+        }
+
+        &__pledge { margin-left: .5rem; }
+      }
+    } /* end of .item__header (modal) */
+
+    .item__footer {
+      &__stock { padding: 0 1rem; }
+
+      &__action {
+        border-top: 1px solid var(--light-gray);
+        margin-top: 1rem;
+        text-align: center;
+        padding: 1.5rem 1rem 0;
+        display: none;
+
+        &__checkout {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: .5rem;
+          margin-top: 1rem;
+
+          &__input  {
+            position: relative;
+
+            input[type="number"] {
+              font-weight: 700;
+              text-align: center;
+              border: 2px solid var(--light-gray);
+              border-radius: 10rem;
+              padding: 1.25rem;
+              width: 100%;
+              -moz-appearance: textfield;
+
+              &::-webkit-outer-spin-button,
+              &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+              }
+
+              &:focus {
+                outline: none;
+                border: 2px solid var(--light-cyan);
+              }
+            }
+
+            span.unit {
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+              margin-left: 1.5rem;
+              margin-top: -1px;
+              font-weight: 700;
+              color: var(--dark-gray);
+            }
+          }
+        }
+
+        @include mixins.screen('small') {
+          text-align: left;
+          align-items: center;
+          justify-content: space-between;
+
+          &__checkout {
+            margin-top: 0;
+            flex: 0;
+            &__input { width: 100px; }
+          }
+        }
+      }
+    } /* end of .item__footer (modal) */
+
+    @include mixins.screen('small') {
+      position: relative;
+
+      .item__footer__stock {
+        position: absolute;
+        top: 2rem;
+        right: 0;
+        display: inline-flex;
+      }
+    }
+  } /* end of .item--modal */
+}
+```
+
+### Continued development
+
+In my Sass files I tried to use the BEM notations for my class but I'm pretty sure I'm not using it correctly. Also I would like if I have some time to refactor my javascript code, specially the part where the user try to pledge.
+
+### Useful resources
+
+- [How to create a custom checkbox](https://www.w3schools.com/howto/howto_css_custom_checkbox.asp) - This helped me with the custom checkbox.
+
+## Author
+
+- Github - [Abdoulaye NDOYE](https://github.com/NDOY3M4N)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/NDOY3M4N)
+- Twitter - [@yourusername](https://twitter.com/NDOY3M4N)
+
