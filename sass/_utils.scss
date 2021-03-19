@@ -15,16 +15,10 @@
 .btn {
   --bg-color: var(--light-cyan);
 
-  border: transparent;
   background-color: var(--bg-color);
   color: var(--white);
   padding: 1.25rem 2.5rem;
   border-radius: 10rem;
-  font-family: inherit;
-  font-weight: 500;
-  font-size: .8rem;
-  line-height: 1;
-  cursor: pointer;
   @include mixins.transition(background-color, .4s);
 
   &:focus,

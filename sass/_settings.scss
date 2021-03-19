@@ -1,3 +1,5 @@
+@use 'mixins';
+
 /** Global Settings here **/
 
 /* Color Palette */
@@ -35,6 +37,13 @@ body {
 
     a { text-decoration: none; }
   }
+
+  button {
+    outline: none;
+    border: transparent;
+    line-height: 1;
+    cursor: pointer;
+  }
 }
 
 /* Typography */
@@ -58,5 +67,15 @@ html {
 
     p { line-height: 1.7; color: var(--dark-gray); }
     a { font-weight: 500; }
+
+    button {
+      font-family: inherit;
+      font-weight: 500;
+      font-size: .8rem;
+
+      @include mixins.screen('small') {
+        font-size: .95rem;
+      }
+    }
   }
 }
