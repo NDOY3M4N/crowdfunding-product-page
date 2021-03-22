@@ -1,6 +1,6 @@
 # Frontend Mentor - Blogr landing page solution
 
-This is a solution to the [Blogr landing page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/blogr-landing-page-EX2RLAApP). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Blogr landing page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/blogr-landing-page-EX2RLAApP). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -48,14 +48,11 @@ Users should be able to:
 
 In the design, the item card in the main page is kinda similar to the item card on the modal. So I thought to myself why not use the same markup. But then I realized that the disposition of certain element is not the same.
 
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 16px">
-  <img src="./item--main.png">
-  <img src="./item--modal.png">
-</div>
+ITEM MAIN             |  ITEM MODAL
+:-------------------------:|:-------------------------:
+![item--main](./item--main.png)  |  ![item--modal](./item--modal.png)
 
-On the left we have the `item--main` and on the right the `item--modal`. As you can see the header and the footer of our items are not the same.
-
-So I come up with this markup:
+As you can see the header and the footer of our items are not the same. So I come up with this markup:
 
 ```html
 <div class="item item--main" id="bamboo">
