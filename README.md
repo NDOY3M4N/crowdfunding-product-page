@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/NDOY3M4N/crowdfunding-product-page](https://github.com/NDOY3M4N/crowdfunding-product-page)
+- Live Site URL: [https://ndoy3m4n.github.io/crowdfunding-product-page/](https://ndoy3m4n.github.io/crowdfunding-product-page/)
 
 ## My process
 
@@ -346,7 +346,6 @@ In my Sass files I tried to use the BEM notations for my class but I'm pretty su
 
 ## Author
 
-- Github - [Abdoulaye NDOYE](https://github.com/NDOY3M4N)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/NDOY3M4N)
-- Twitter - [@yourusername](https://twitter.com/NDOY3M4N)
+- Frontend Mentor - [@NDOY3M4N](https://www.frontendmentor.io/profile/NDOY3M4N)
+- Twitter - [@NDOY3M4N](https://twitter.com/NDOY3M4N)
 
